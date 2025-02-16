@@ -1,0 +1,934 @@
+body{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+  background-color: rgb(0, 0, 0);
+}
+
+
+
+header {
+  width: 100%;
+  height: 10vh;
+  box-shadow: 0 10px 10px -15px rgb(0, 0, 0);
+
+  & .navbar {
+    display: flex;
+    margin-left: 50%;
+    list-style-type: none;
+    /* Remove as bolinhas dos itens da lista */
+    gap: 30px;
+    margin-top: 10px;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 324;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    align-items: center;
+    /* Centraliza verticalmente os itens */
+
+  }
+
+  & .navbar li {
+    margin-top: 10px;
+    margin-right: 20px;
+    /* Adiciona espaço entre os itens da lista */
+    color: white;
+    /* Cor do texto */
+    font-size: 18px;
+    position: relative;
+    /* Necessário para a linha ser posicionada abaixo do item */
+    padding-bottom: 5px;
+    /* Adiciona um espaço para a linha */
+    cursor: pointer;
+    /* Adiciona um cursor de pointer para interação */
+  }
+
+  /* Criação da linha abaixo dos itens da lista */
+  .navbar li::after {
+    content: '';
+    /* Cria a linha */
+    position: absolute;
+    bottom: 0;
+    /* A linha vai estar na parte inferior do item */
+    left: 0;
+    width: 0;
+    /* Começa com largura zero */
+    height: 1px;
+    /* Espessura da linha */
+    background-color: white;
+    /* Cor da linha */
+    transition: width 0.3s ease-in-out;
+    /* Transição suave */
+  }
+
+  /* Efeito de hover para expandir a linha */
+  .navbar li:hover::after {
+    width: 100%;
+    /* A linha se expande para a largura total do item */
+  }
+
+  & .title {
+    padding-left: 50px;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 324;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    text-align: center;
+    /* Garante que o texto dentro do título esteja centralizado */
+    color: white;
+    margin-top: 15px;
+    position: relative;
+    /* Necessário para o posicionamento do pseudo-elemento */
+  }
+
+  /* Pseudo-elemento para a linha */
+  .title::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    /* Coloca a linha abaixo do título */
+    left: 39%;
+    width: 0;
+    /* Inicialmente, a linha tem largura 0 */
+    height: 1px;
+    /* Define a espessura da linha */
+    background-color: white;
+    /* Cor da linha */
+    transition: width 0.3s ease;
+    /* Animação para expandir a linha */
+  }
+
+  /* Efeito de hover para expandir a linha */
+  .title:hover::after {
+    width: 60%;
+    /* Quando o mouse passa, a linha expande para a largura total */
+  }
+
+
+
+
+  & .login {
+    height: 10px;
+    width: 100px;
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 5px;
+    color: #ffffff;
+    z-index: 1;
+    background: #686868;
+    position: relative;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 324;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    display: flex;
+    align-items: center;
+    /* Alinha o texto verticalmente */
+    justify-content: center;
+    /* Alinha o texto horizontalmente */
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+
+
+
+  .login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 5px;
+    background-color: #9a9a9a;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    transition: all 250ms
+  }
+
+  .login:hover {
+    color: #000000;
+  }
+
+  .login:hover::before {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  header {
+    height: auto;
+    /* Permitir altura flexível */
+    padding: 10px;
+    /* Adicionar espaçamento interno */
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    /* Alinhar itens verticalmente */
+    align-items: center;
+    /* Centralizar itens horizontalmente */
+  }
+
+  .title {
+    margin: 10px 0;
+    text-align: center;
+    /* Garante que o título esteja centralizado */
+  }
+
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permitir quebra de linha para itens */
+    justify-content: center;
+    /* Centralizar itens no espaço disponível */
+    margin-left: 0;
+    /* Remove margens adicionais */
+    gap: 20px;
+  }
+
+  .navbar li {
+    margin: 5px 10px;
+    /* Ajustar espaçamento */
+    font-size: 16px;
+    /* Reduzir tamanho da fonte */
+  }
+
+  .login {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    /* Alinhar itens verticalmente */
+    gap: 15px;
+    /* Ajustar o espaçamento */
+  }
+
+  .login {
+    margin-top: 15px;
+    width: 80px;
+    /* Ajustar largura do botão */
+    font-size: 14px;
+    /* Reduzir tamanho do texto */
+  }
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  /* Espaça o título e a navbar */
+  align-items: center;
+  /* Alinha verticalmente o título e os itens da navbar */
+  height: 100%;
+  /* Ocupa toda a altura do header */
+  padding: 0 20px;
+  /* Adiciona um pequeno padding para o lado */
+}
+
+.banner {
+  width: 100vw;
+  height: 50vh;
+  background-image: linear-gradient(to bottom, rgb(137, 166, 184), rgb(163, 194, 213) 20%, rgb(0, 0, 0) 70%);
+  text-align: center;
+  position: relative;
+  padding-bottom: 500px;
+  opacity: 0;
+  /* Inicialmente invisível */
+  transition: opacity .5s ease-in-out;
+  /* Animação de fade */
+}
+
+.banner.visible {
+  opacity: 1;
+  /* Visível quando a classe 'visible' for aplicada */
+}
+
+.text {
+  opacity: 0;
+  /* Inicialmente invisível */
+  transition: opacity .5s ease-in-out;
+  /* Animação de fade */
+}
+
+.text.vislble {
+  opacity: 1;
+  /* Visível quando a classe 'visible' for aplicada */
+}
+
+h1,
+p,
+.Documents-btn {
+  opacity: 0;
+  /* Inicialmente invisível */
+  transition: opacity .5s ease-in-out;
+  /* Animação de fade */
+}
+
+h1.visible,
+p.visible,
+.Documents-btn.visible {
+  opacity: 1;
+  /* Visível quando a classe 'visible' for aplicada */
+}
+
+& h1 {
+  padding-top: 5%;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 547;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  color: rgb(255, 255, 255);
+}
+
+
+
+& p {
+  color: rgb(255, 255, 255);
+  font-family: "Hind Mysuru", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+& .subtitle {
+  font-size: 20px;
+}
+
+& .Documents-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
+  height: 45px;
+  border: none;
+  padding: 0px 15px;
+  border-radius: 5px;
+  background-color: rgb(163, 194, 213);
+  /* Dourado suave */
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 0 auto;
+  /* Centraliza horizontalmente */
+}
+
+.folderContainer {
+  width: 40px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.fileBack {
+  z-index: 1;
+  width: 80%;
+  height: auto;
+}
+
+.filePage {
+  width: 50%;
+  height: auto;
+  position: absolute;
+  z-index: 2;
+  transition: all 0.3s ease-out;
+}
+
+.fileFront {
+  width: 85%;
+  height: auto;
+  position: absolute;
+  z-index: 3;
+  opacity: 0.95;
+  transform-origin: bottom;
+  transition: all 0.3s ease-out;
+}
+
+.text {
+  letter-spacing: 2px;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 324;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  color: black;
+}
+
+.Documents-btn:hover .filePage {
+  transform: translateY(-5px);
+}
+
+.Documents-btn:hover {
+  background-color: rgb(134, 168, 190);
+  /* Dourado suave */
+}
+
+.Documents-btn:active {
+  transform: scale(0.95);
+}
+
+.Documents-btn:hover .fileFront {
+  transform: rotateX(30deg);
+}
+
+
+.banner.visible {
+  opacity: 1;
+  /* Visível quando a classe 'visible' for aplicada */
+}
+
+.imagens {
+  height: 100vh;
+  width: 90vw;
+  overflow-x: hidden;
+  display: flex;
+  padding: 50px;
+  gap: 30px;
+  position: absolute;
+  top: 85vh;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
+  margin: 0;
+}
+
+.imagens img {
+  max-height: 500px;
+  max-width: 400px;
+  border-radius: 5px;
+  filter: grayscale(100%);
+  opacity: 1;
+  /* Inicialmente invisível */
+  transition: transform 1s ease-in-out, opacity 1.5s ease-in-out, filter .7s ease-in, scale .5s;
+  /* Animação de movimento e fade */
+}
+
+.imagens img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.01);
+  transition: 1s;
+}
+
+.imagens img:active {
+  scale: 0.99;
+  transition: .8s;
+}
+
+.img1 {
+  position: absolute;
+  left: -100%;
+  /* A imagem começa fora da tela, à esquerda */
+}
+
+.img2 {
+  position: absolute;
+  top: 160%;
+}
+
+.img3 {
+  position: absolute;
+  right: -100%;
+  /* A imagem começa fora da tela, à direita */
+}
+
+
+
+
+.paragrafo1 {
+  color: white;
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 324;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+  padding-top: 2%;
+  max-width: 60%;
+  margin-left: 20%;
+  opacity: 0;
+  /* Inicialmente invisível */
+  transition: opacity 1.5s ease-in-out;
+  /* Animação de fade */
+}
+
+.paragrafo1.visible {
+  opacity: 1;
+  /* Visível quando a classe 'visible' for aplicada */
+}
+
+.bmw {
+  position: relative;
+  margin-top: 153vh;
+  display: flex;
+  padding-left: 50px;
+  padding-bottom: 200px;
+  z-index: 1;
+  /* Garantir que a div esteja acima de outros elementos */
+  width: 93%;
+  /* Garantir que o contêiner tenha largura total */
+  overflow: hidden;
+  /* Impede que as setas saiam para fora do contêiner */
+  gap: 40px;
+  opacity: 0;
+  /* Começa invisível */
+  transition: opacity .8s ease-in-out;
+  /* Aplica transição para fade */
+}
+
+/* A classe fade-in será adicionada quando a div estiver visível */
+.bmw.fade-in {
+  opacity: 1 !important;
+  /* Adicionando !important para garantir que o estilo seja aplicado */
+}
+
+
+/* Outros estilos... */
+.bmw img {
+  width: 800px;
+  border-radius: 5px;
+  filter: grayscale(100%);
+  transition: filter .5s ease-in;
+  transition: opacity 0.5s ease-in-out, filter .5s ease-in;
+  z-index: 1;
+}
+
+.bmw img.visible {
+  opacity: 1;
+  /* Visível quando a classe 'visible' for aplicada */
+}
+
+.bmw img:hover {
+  filter: grayscale(0%);
+}
+
+.bmw .bmw-text {
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 324;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+  max-height: 550px;
+  /* Define a altura máxima visível */
+  overflow-y: auto;
+  /* Permite a rolagem vertical quando o conteúdo excede a altura */
+  padding-right: 10px;
+  /* Adiciona espaço para a barra de rolagem */
+  scrollbar-width: thin;
+  /* Estiliza a barra de rolagem em navegadores compatíveis */
+  scrollbar-color: rgb(0, 102, 204) transparent;
+  /* Cor personalizada para a barra de rolagem */
+  letter-spacing: 2px;
+  margin-top: -25px;
+}
+
+/* Estilização para a barra de rolagem no Webkit (Chrome, Edge, Safari) */
+.bmw .bmw-text::-webkit-scrollbar {
+  width: 8px;
+  /* Largura da barra de rolagem */
+}
+
+.bmw .bmw-text::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  /* Cor do "polegar" da barra */
+  border-radius: 4px;
+  /* Deixa a barra arredondada */
+}
+
+.bmw .bmw-text::-webkit-scrollbar-track {
+  background: transparent;
+  /* Fundo da barra de rolagem */
+}
+
+.image-wrapper {
+  position: relative;
+  /* Necessário para o posicionamento do ::after */
+  display: inline-block;
+}
+
+.image-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  /* Garante que o gradiente começa na parte inferior */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 102, 204, 0.609)250%);
+  border-radius: 5px;
+  /* Garante consistência com a borda da imagem */
+  z-index: 2;
+  /* Posiciona o gradiente acima da imagem */
+  pointer-events: none;
+  /* Garante que o gradiente não interfira nos cliques */
+  opacity: 0;
+  /* Invisível inicialmente */
+  transition: opacity 0.5s ease-in-out;
+  /* Animação ao aparecer */
+}
+
+.image-wrapper:hover::after {
+  opacity: 1;
+  /* Mostra o gradiente ao passar o mouse sobre a imagem */
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  width: 800px; /* Garante que a imagem e as setas fiquem dentro de uma área de tamanho fixo */
+  height: 450px; /* Ajuste conforme a altura desejada para a imagem */
+}
+
+.arrow-left,
+.arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10; /* Garante que as setas fiquem acima das imagens */
+}
+
+.arrow-left {
+  left: 10px; /* Ajuste para garantir que a seta esteja visível */
+}
+
+.arrow-right {
+  right: 10px; /* Ajuste para garantir que a seta esteja visível */
+}
+
+.porsche {
+  color: white;
+  position: relative;
+  display: flex;
+  margin-top: 20vh;
+  gap: 50px;
+  margin-inline: 100px;
+  padding-bottom: 200px;
+  opacity: 0;
+  /* Começa invisível */
+  transition: opacity 1s ease-in-out;
+  /* Transição para o fade */
+}
+
+
+
+.porsche.fade-in {
+  opacity: 1 !important;
+  /* Aplique a classe fade-in quando a div entrar na tela */
+}
+
+.porsche img {
+  width: 650px;
+  border-radius: 5px;
+  transition: opacity 0.5s ease, filter 0.5s ease-in;
+  /* Transição para o fade */
+  filter: grayscale(100%);
+}
+
+.porsche img:hover {
+  filter: grayscale(0);
+}
+
+.porsche-text {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 324;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+  padding-top: 130px;
+  letter-spacing: 1.5px;
+}
+
+
+
+.porsche.fade-in {
+  opacity: 1 !important;
+  /* Adicionando !important para garantir que o estilo seja aplicado */
+}
+
+.image-wrapper1 {
+  position: relative;
+  /* Necessário para o posicionamento do ::after */
+  display: inline-block;
+}
+
+.image-container1 {
+  position: relative;
+  display: inline-block;
+  width: 800px;
+  /* Garante que a imagem e as setas fiquem dentro de uma área de tamanho fixo */
+  height: 450px;
+  /* Ajuste conforme a altura desejada para a imagem */
+}
+
+.arrow-left1,
+.arrow-right1 {
+  position: absolute;
+  top: 85%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  /* Garante que as setas fiquem acima das imagens */
+}
+
+.arrow-left1 {
+  left: 10px;
+  /* Ajuste para garantir que a seta esteja visível */
+}
+
+.arrow-right1 {
+  right: 10px;
+  /* Ajuste para garantir que a seta esteja visível */
+}
+
+.r34{
+  position: relative;
+  display: flex;
+  margin-top: 20vh;
+  gap: 50px;
+  margin-inline: 100px;
+  padding-bottom: 200px;
+  opacity: 0; /* Inicialmente invisível */
+  transition: opacity 1s ease-in-out, filter .5s ease-in-out; /* Animação de transição */
+}
+
+.r34.fade-in {
+  opacity: 1; /* Visível */
+}
+
+.r34.fade-out {
+  opacity: 0; /* Invisível novamente */
+}
+
+.r34 img {
+  width: 650px;
+  border-radius: 5px;
+  transition: opacity 0.5s ease, filter 0.5s ease-in;
+  /* Transição para o fade */
+  filter: grayscale(100%);
+  opacity: 1; /* Padrão visível */
+}
+
+.r34 img.fade-out {
+  opacity: 0; /* Invisível para a transição de saída */
+}
+
+.r34 img.fade-in {
+  opacity: 1; /* Visível para a transição de entrada */
+}
+
+.r34 img:hover {
+  filter: grayscale(0);
+}
+
+.r34-text {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 324;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+  margin-top: 15px;
+
+  /* Limite de altura */
+  max-height: 650px;
+
+  /* Adiciona scroll vertical se ultrapassar a altura */
+  overflow-y: auto;
+
+  /* Aparência personalizada opcional */
+  scrollbar-width: thin; /* Para navegadores compatíveis */
+  scrollbar-color: rgb(255, 255, 255)  transparent; /* Para navegadores compatíveis */
+  letter-spacing: 2px;
+}
+
+
+.image-wrapper2 {
+  position: relative;
+  /* Necessário para o posicionamento do ::after */
+  display: inline-block;
+}
+
+.image-container2 {
+  position: relative;
+  display: inline-block;
+  width: 800px;
+  /* Garante que a imagem e as setas fiquem dentro de uma área de tamanho fixo */
+  height: 450px;
+  /* Ajuste conforme a altura desejada para a imagem */
+}
+
+.arrow-left2,
+.arrow-right2 {
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  /* Garante que as setas fiquem acima das imagens */
+}
+
+.arrow-left2 {
+  left: 10px;
+  /* Ajuste para garantir que a seta esteja visível */
+}
+
+.arrow-right2 {
+  right: 10px;
+  /* Ajuste para garantir que a seta esteja visível */
+}
+
+.koenigsegg{
+  position: relative;
+  display: flex;
+  margin-top: 20vh;
+  gap: 50px;
+  margin-inline: 100px;
+  padding-bottom: 200px;
+   opacity: 0;
+}
+
+.koenigsegg .koenigsegg-text{
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 324;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 20px;
+  margin-top: 100px;
+  letter-spacing: 2px;
+}
+
+/* Define o efeito de fade-in e fade-out */
+.koenigsegg img {
+  filter: grayscale(100%);
+  transition: opacity 0.5s ease-in-out, filter .5s ease-in-out;
+  border-radius: 5px;
+  width: 650px;
+}
+
+/* Efeito de fade-out */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Efeito de fade-in */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0); /* Faz com que a animação pareça um "deslizar" */
+  transition: opacity 1s ease;
+}
+
+.koenigsegg img:hover {
+  filter: grayscale(0%);
+}
+
+.image-wrapper3 {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container3 {
+  position: relative;
+  display: inline-block;
+  width: 800px;
+  height: 450px;
+}
+
+.arrow-left3,
+.arrow-right3 {
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow-left3 {
+  left: 10px;
+}
+
+.arrow-right3 {
+  right: 10px;
+}
+
+
+/* Estilo do botão */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5ca5c0;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, scale .5s, background-color .5s;
+  z-index: 5;
+}
+
+#backToTop:hover {
+  background-color: #478399;
+  scale: 1.05;
+}
+
+/* Exibe o botão quando o usuário rola a página */
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#backToTop:active{
+  scale: 0.9;
+}
