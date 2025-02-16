@@ -410,6 +410,7 @@ p.visible,
   transform: translateX(-50%);
   justify-content: center;
   margin: 0;
+  overflow-y: hidden;
 }
 
 .imagens img {
