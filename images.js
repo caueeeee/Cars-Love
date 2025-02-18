@@ -3,8 +3,8 @@
 var imagens = gsap.timeline({
     scrollTrigger: {
         trigger: '.imagens',
-        start: '0% 95%',
-        end: '50% 50%',
+        start: '0% 90%',
+        end: '45% 60%',
         scrub: true,
     }
 })
@@ -12,7 +12,7 @@ var imagens = gsap.timeline({
 imagens.to(
     '#Porsche',
     {
-        left: '10%',
+        left: '8%',
     },
     'imgs'
 ); // Nomeando esse trecho de animação como 'orange' para sincronuzação
